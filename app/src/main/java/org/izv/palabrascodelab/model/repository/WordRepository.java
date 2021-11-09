@@ -42,4 +42,11 @@ public class WordRepository {
             }
         }.start();*/
     }
+
+    public void littleInsert() {
+        Word word = new Word("New");
+        insert(word);
+        word = new Word("Old");
+        insert(word);
+    }
 }
