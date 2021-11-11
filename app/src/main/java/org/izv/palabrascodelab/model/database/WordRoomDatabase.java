@@ -21,7 +21,7 @@ public abstract class WordRoomDatabase extends RoomDatabase {
     private static final String INSTANCIA = "hola";
     private static final int NUMBER_OF_THREADS = Runtime.getRuntime().availableProcessors();
 
-    public static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    public static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(1);
     Thread databaseWriteThread;
 
     public static WordRoomDatabase getDatabase(final Context context) {

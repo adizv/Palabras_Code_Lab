@@ -27,26 +27,41 @@ public class WordRepository {
         mAllWords = mWordDao.getAlphabetizedWords();
     }
 
+    public void cleanTable() {
+        WordRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mWordDao.deleteAll();
+        });
+    }
+
     public LiveData<List<Word>> getAllWords() {
         return mAllWords;
     }
 
     public void insert(Word word) {
         WordRoomDatabase.databaseWriteExecutor.execute(() -> {
+            try {
+                Thread.sleep(2300 + (int)(Math.random() * 3000));
+            } catch (InterruptedException e) {
+            }
             mWordDao.insert(word);
         });
-        /*new Thread() {
+        /*Thread thread = new Thread() {
             @Override
             public void run() {
+                try {
+                    Thread.sleep(2300 + (int)(Math.random() * 3000));
+                } catch (InterruptedException e) {
+                }
                 mWordDao.insert(word);
             }
-        }.start();*/
+        };
+        thread.start();*/
     }
 
     public void littleInsert() {
-        Word word = new Word("New");
+        Word word = new Word("New 6");
         insert(word);
-        word = new Word("Old");
+        word = new Word("Old 6");
         insert(word);
     }
 }

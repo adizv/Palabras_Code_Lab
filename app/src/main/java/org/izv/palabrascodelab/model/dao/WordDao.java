@@ -20,14 +20,14 @@ import java.util.List;
 public interface WordDao { //-> implementar ROOM
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(Word word);
+    void insert(Word word); //hebra
 
     @Query("DELETE FROM word_table")
-    void deleteAll();
+    void deleteAll(); //hebra
 
     @Query("SELECT * FROM word_table ORDER BY word ASC")
-    List<Word> getAlphabetizedWordsOld();
+    List<Word> getAlphabetizedWordsOld(); //hebra
 
     @Query("SELECT * FROM word_table ORDER BY word ASC")
-    LiveData<List<Word>> getAlphabetizedWords();
+    LiveData<List<Word>> getAlphabetizedWords(); //hebra principal
 }

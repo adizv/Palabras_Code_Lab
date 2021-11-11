@@ -30,6 +30,10 @@ public class WordViewModel extends AndroidViewModel {
         mRepository.insert(word);
     }*/
 
+    public void cleanTable() {
+        mRepository.cleanTable();
+    }
+
     public LiveData<List<Word>> getAllWords() {
         return mAllWords; //mRepository.getAllWords();
     }
